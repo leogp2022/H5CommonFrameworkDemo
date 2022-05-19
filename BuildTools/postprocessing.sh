@@ -1,6 +1,6 @@
 #!/bin/sh
 rootDir=`pwd`
-projectName=Tile2H5
+projectName=H5CommonFrameworkDemo
 
 localDir=${rootDir}/$projectName/build/web-mobile/
 gameName=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.zipName'`
