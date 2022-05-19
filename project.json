@@ -1,0 +1,8 @@
+{
+  "engine": "cocos2d-html5",
+  "packages": "packages",
+  "version": "2.4.3",
+  "name": "H5CommonFrameworkDemo",
+  "id": "99b3bcdc-b6f7-4e46-8079-08b4a2e9b051",
+  "isNew": false
+}

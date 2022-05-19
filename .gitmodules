@@ -1,0 +1,4 @@
+[submodule "assets/CFramework"]
+	path = assets/CFramework
+	url = git@github.com:FlyDragonGO/H5CommonFramework.git
+	branch = dev-cc

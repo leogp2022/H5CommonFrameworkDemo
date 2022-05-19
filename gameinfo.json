@@ -1,0 +1,16 @@
+{
+    "id": 11,
+    "name": "Tiles Hop",
+    "scheme": "tileshop",
+    "orientation": "portrait",
+    "version": "0.0.16",
+    "tags": ["2D", "Offline"],
+    "icon": "https://res.starcdn.cn/h5games_debug/gameicons/TilesHop.png",
+    "players": "23k",
+    "favorableRate": "97%",
+    "star": 9,
+    "zipName": "TilesHop",
+    "url": "",
+    "inPacket": false,
+    "size": 33354
+}

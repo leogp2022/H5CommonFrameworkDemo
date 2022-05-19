@@ -1,0 +1,12 @@
+{
+  "ver": "1.1.2",
+  "uuid": "51050d9d-6d4b-49a8-b637-c6668cfacc48",
+  "isBundle": true,
+  "bundleName": "MainPrefab",
+  "priority": 1,
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
+  "subMetas": {}
+}
