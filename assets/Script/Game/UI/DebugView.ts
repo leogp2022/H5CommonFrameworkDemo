@@ -25,7 +25,6 @@ export default class DebugView extends ViewBase {
 
         let biButton: cc.Node = this.findChild("BIBtn");
         this.registerTouch(biButton, this.OnClickBIBtn, this);
-
     }
 
     private OnClickRvBtn(): void {
@@ -38,6 +37,7 @@ export default class DebugView extends ViewBase {
     OnClickIntBtn() {
         console.log(`OnClickIntBtn`);
         AdLogicManager.Instance().TryShowInterstitial(IntAdPosition.INT_TEST);
+        console.log(`OnClickIntBtn 2`);
     }
 
     OnClickIapBtn() {

@@ -19,20 +19,16 @@ export class StoreModel extends Singleton {
             IAPManager.Instance().PurchaseProduct(productId, purchaseId, this.OnPurchased.bind(this));
         };
 
-		if (cc.sys.os == cc.sys.OS_ANDROID) {
-			IAPManager.Instance().IsProductAlreadyOwned(productId, purchaseId, (result: boolean, purchaseId2: number) => {
-				if (result) {
-					// 该商品有未完成订单，尝试一次补单
-					console.log("该商品为未完成状态，尝试补单，取消本次付费行为!");
-					IAPManager.Instance().VerifyUnfulfilledPayment(productId, purchaseId);
-					return;
-				} else {
-					cb();
-				}
-			});
-		} else {
-			cb();
-		}
+        IAPManager.Instance().IsProductAlreadyOwned(productId, purchaseId, (result: boolean, purchaseId2: number) => {
+            if (result) {
+                // 该商品有未完成订单，尝试一次补单
+                console.log("该商品为未完成状态，尝试补单，取消本次付费行为!");
+                IAPManager.Instance().VerifyUnfulfilledPayment(productId, purchaseId);
+                return;
+            } else {
+                cb();
+            }
+        });
     }
 
     GetIPAReward() {
