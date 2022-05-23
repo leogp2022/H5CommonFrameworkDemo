@@ -1,7 +1,13 @@
+import { EventCenter } from "../../../../../CFramework/CPlugin/Event/EventCenter";
+import { EventEnum } from "../../../../../CFramework/CPlugin/Event/EventEnum";
 import IAPManager, { PurchaseFailureReason } from "../../../../../CFramework/CPlugin/IAP/IAPManager";
 import Singleton from "../../../../../CFramework/CPlugin/Pattern/Singleton";
 
 export class StoreModel extends Singleton {
+    public Init() {
+        EventCenter.on(EventEnum.VERIFY_UNFULFILLED_PAYMENTS, this.OnPurchased, this);
+    }
+
     public Purchase(purchaseId: number) {
         if (purchaseId <= 0) {
             console.error(`StoreModel.Purchase > invalid purchaseId: ${purchaseId}`);
@@ -15,20 +21,7 @@ export class StoreModel extends Singleton {
 
         const productId: string = "com.joyplay.joyplay.token1";
 
-        let cb = () => {
-            IAPManager.Instance().PurchaseProduct(productId, purchaseId, this.OnPurchased.bind(this));
-        };
-
-        IAPManager.Instance().IsProductAlreadyOwned(productId, purchaseId, (result: boolean, purchaseId2: number) => {
-            if (result) {
-                // 该商品有未完成订单，尝试一次补单
-                console.log("该商品为未完成状态，尝试补单，取消本次付费行为!");
-                IAPManager.Instance().VerifyUnfulfilledPayment(productId, purchaseId);
-                return;
-            } else {
-                cb();
-            }
-        });
+        IAPManager.Instance().PurchaseProductWithVerify(productId, purchaseId, this.OnPurchased.bind(this));
     }
 
     GetIPAReward() {
