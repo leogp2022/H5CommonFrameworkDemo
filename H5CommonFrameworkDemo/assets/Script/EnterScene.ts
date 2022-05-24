@@ -1,8 +1,8 @@
 import { CCGameApp } from "../CFramework/CCCBase/Script/CCGameApp";
-import ViewManager from "../CFramework/CCCBase/Script/UI/Base/ViewManager";
-import UIWaiting from "../CFramework/CCCBase/Script/UI/UILoading";
-import AdLogicModel from "../CFramework/CCCBase/Script/UserGroup/Model/AdLogicModel";
-import BridgeManager from "../CFramework/CPlugin/Bridge/BridgeManager";
+import ViewManager from "../CFramework/CCCBase/Script/UI/Base/CViewManager";
+import UIWaiting from "../CFramework/CCCBase/Script/UI/CUIWaiting";
+import AdLogicModel from "../CFramework/CCCBase/Script/UserGroup/Model/CAdLogicModel";
+import BridgeManager from "../CFramework/CPlugin/Bridge/CBridgeManager";
 import DebugView from "./Game/UI/DebugView";
 
 const { ccclass, property } = cc._decorator;

@@ -1,5 +1,5 @@
-import ViewBase from "../../../CFramework/CCCBase/Script/UI/Base/ViewBase";
-import { AdLogicManager } from "../../../CFramework/CCCBase/Script/UserGroup/AdLogicManager";
+import ViewBase from "../../../CFramework/CCCBase/Script/UI/Base/CViewBase";
+import { AdLogicManager } from "../../../CFramework/CCCBase/Script/UserGroup/CAdLogicManager";
 import { GameBIManager } from "../BI/GameBIManager";
 import { IntAdPosition, RvAdPosition } from "../UserGroup/AdPosition";
 import { StoreModel } from "./Store/Model/StoreModel";

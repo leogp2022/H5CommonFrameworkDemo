@@ -1,5 +1,5 @@
-import { BIManager } from "../../../CFramework/CPlugin/BI/BIManager";
-import Singleton from "../../../CFramework/CPlugin/Pattern/Singleton";
+import { BIManager } from "../../../CFramework/CPlugin/BI/CBIManager";
+import Singleton from "../../../CFramework/CPlugin/Pattern/CSingleton";
 
 export class GameBIManager extends Singleton {
     public SendCommonEvent(data: any, type: string) {

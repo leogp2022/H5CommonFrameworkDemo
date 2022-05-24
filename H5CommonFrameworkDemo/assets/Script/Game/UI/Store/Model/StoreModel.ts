@@ -1,7 +1,7 @@
-import { EventCenter } from "../../../../../CFramework/CPlugin/Event/EventCenter";
-import { EventEnum } from "../../../../../CFramework/CPlugin/Event/EventEnum";
-import IAPManager, { PurchaseFailureReason } from "../../../../../CFramework/CPlugin/IAP/IAPManager";
-import Singleton from "../../../../../CFramework/CPlugin/Pattern/Singleton";
+import { EventCenter } from "../../../../../CFramework/CPlugin/Event/CEventCenter";
+import { EventEnum } from "../../../../../CFramework/CPlugin/Event/CEventEnum";
+import IAPManager, { PurchaseFailureReason } from "../../../../../CFramework/CPlugin/IAP/CIAPManager";
+import Singleton from "../../../../../CFramework/CPlugin/Pattern/CSingleton";
 
 export class StoreModel extends Singleton {
     public Init() {
