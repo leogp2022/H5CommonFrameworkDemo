@@ -1,7 +1,7 @@
 {
     "id": 11,
-    "name": "Tiles Hop",
-    "scheme": "tileshop",
+    "name": "Tiles Hop2",
+    "scheme": "tileshop2",
     "orientation": "portrait",
     "version": "0.0.18",
     "tags": ["2D", "Offline"],
@@ -9,7 +9,7 @@
     "players": "23k",
     "favorableRate": "97%",
     "star": 9,
-    "zipName": "TilesHop",
+    "zipName": "TilesHop2",
     "url": "",
     "inPacket": false,
     "size": 33354
