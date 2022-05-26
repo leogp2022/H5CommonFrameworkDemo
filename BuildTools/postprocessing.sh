@@ -1,4 +1,5 @@
 #!/bin/sh
+
 rootDir=`pwd`
 projectName=H5CommonFrameworkDemo
 
@@ -70,8 +71,11 @@ mkdir ${temp_dir}
 
 cp -r $localDir $temp_dir
 
-
 zip -q -r $zip_file $temp_dir
+
+echo old upload Start ====================================
+scp $zip_file $serverPath"/"$zip_file_fullName
+echo old upload Finished ====================================
 
 rm -rf $uploadFileNamePath
 mkdir $uploadFileNamePath
@@ -80,19 +84,18 @@ path_version=${uploadFileNamePath}/${folder_version}
 mkdir $path_version
 
 cp $zip_file $path_version/$gameName".zip"
-scp -r $uploadFileNamePath $serverRoot
-#scp ../$projectName/gameinfo.json $serverPath"/gameinfo.json"
 
-echo upload Finished ====================================
+echo new upload Start ====================================
+scp -r $uploadFileNamePath $serverRoot
+echo new upload Finished ====================================
+
+#scp ../$projectName/gameinfo.json $serverPath"/gameinfo.json"
 
 #下载gamelist.json
 curl ${gameList} -o ${temp_dir}/gamelistD.json
 
-
 gameInfoPath=${rootDir}"/"${projectName}/gameinfo.json
 gameListPath=${rootDir}"/BuildTools/"${temp_dir}/gamelistD.json
-
-
 
 node gameListTools.js  ${gameInfoPath} ${gameListPath} ${rootDir}"/BuildTools/gamelist.json" $zip_file
 
