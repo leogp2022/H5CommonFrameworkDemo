@@ -84,7 +84,6 @@ scp -r $uploadFileNamePath $serverRoot
 #scp ../$projectName/gameinfo.json $serverPath"/gameinfo.json"
 
 echo upload Finished ====================================
-echo ${remoteUrl}${uploadFileNamePath}/${folder_version}/${gameName}.zip
 
 #下载gamelist.json
 curl ${gameList} -o ${temp_dir}/gamelistD.json
@@ -122,3 +121,5 @@ rm -f .zip
 rm -f *.zip
 
 echo Postprocessing End ====================================
+
+echo ${remoteUrl}${uploadFileNamePath}/${folder_version}/${gameName}.zip
