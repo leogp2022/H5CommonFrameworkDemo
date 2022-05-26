@@ -5,7 +5,15 @@ import Singleton from "../../../../../CFramework/CPlugin/Pattern/CSingleton";
 
 export class StoreModel extends Singleton {
     public Init() {
+        this.InitProduct();
+
         EventCenter.on(EventEnum.VERIFY_UNFULFILLED_PAYMENTS, this.OnPurchased, this);
+    }
+
+    private InitProduct() {
+        let consumableProductIds: Array<string> = new Array<string>();
+        consumableProductIds.push("com.joyplay.joyplay.token1");
+        IAPManager.Instance().InitProduct(consumableProductIds);
     }
 
     public Purchase(purchaseId: number) {

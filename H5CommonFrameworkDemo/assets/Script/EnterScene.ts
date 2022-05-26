@@ -4,6 +4,7 @@ import UIWaiting from "../CFramework/CCCBase/Script/UI/CUIWaiting";
 import AdLogicModel from "../CFramework/CCCBase/Script/UserGroup/Model/CAdLogicModel";
 import BridgeManager from "../CFramework/CPlugin/Bridge/CBridgeManager";
 import DebugView from "./Game/UI/DebugView";
+import { StoreModel } from "./Game/UI/Store/Model/StoreModel";
 
 const { ccclass, property } = cc._decorator;
 
@@ -19,12 +20,13 @@ export default class EnterScene extends cc.Component {
             musicPrePath: "AudioDynamic/"
         });
 
+        StoreModel.Instance().Init();
         AdLogicModel.Instance().Init();
-
-        BridgeManager.Instance().scheme_notifyprogress("LandLobby", 1.0);
 
         cc.game.addPersistRootNode((await UIWaiting.create()).node);
         await ViewManager.openScene(DebugView);
+
+        BridgeManager.Instance().scheme_notifyprogress("LandLobby", 1.0);
     }
 
     start() {
