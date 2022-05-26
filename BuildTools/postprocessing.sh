@@ -77,9 +77,6 @@ rm -rf $uploadFileNamePath
 mkdir $uploadFileNamePath
 folder_version=${android_version//./_}
 path_version=${uploadFileNamePath}/${folder_version}
-echo "================uploadFileNamePath=============="
-echo ${uploadFileNamePath}
-echo ${folder_version}
 mkdir $path_version
 
 cp $zip_file $path_version/$gameName".zip"
