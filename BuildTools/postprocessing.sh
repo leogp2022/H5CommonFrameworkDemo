@@ -76,7 +76,7 @@ zip -q -r $zip_file $temp_dir
 rm -rf $uploadFileNamePath
 mkdir $uploadFileNamePath
 folder_version=${uploadFileNamePath//./_}
-path_version=$uploadFileNamePath/$folder_version
+path_version=${uploadFileNamePath}/${folder_version}
 mkdir $path_version
 
 cp $zip_file $path_version/$gameName".zip"
