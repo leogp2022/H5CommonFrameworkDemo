@@ -75,7 +75,7 @@ zip -q -r $zip_file $temp_dir
 
 rm -rf $uploadFileNamePath
 mkdir $uploadFileNamePath
-folder_version=${uploadFileNamePath//./_}
+folder_version=${android_version//./_}
 path_version=${uploadFileNamePath}/${folder_version}
 echo "================uploadFileNamePath=============="
 echo ${uploadFileNamePath}
