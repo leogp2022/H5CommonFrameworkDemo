@@ -15,6 +15,8 @@ npm install
 cd $rootDir
 fi
 
+debugServerRoot=ubuntu@res.starcdn.cn:/data/www/html/h5games_debug/
+
 #0.DEBUG 1.RELEASE
 if [ $1 == 0 ]
 then
@@ -23,11 +25,13 @@ then
 serverRoot=ubuntu@res.starcdn.cn:/data/www/html/h5games_debug/
 serverPath=ubuntu@res.starcdn.cn:/data/www/html/h5games_debug/$uploadFileNamePath
 gameList=https://res.starcdn.cn/h5games_debug/config/gamelist.json
+remoteUrl=https://res.starcdn.cn/h5games_debug/
 else
 #android_version=1.0.0
-serverRoot=ubuntu@res.starcdn.cn:/data/www/html/h5games_debug/
+serverRoot=ubuntu@res.starcdn.cn:/data/www/html/h5games_release/
 serverPath=ubuntu@res.starcdn.cn:/data/www/html/h5games_release/$uploadFileNamePath
 gameList=https://res.starcdn.cn/h5games_release/config/gamelist.json
+remoteUrl=https://res.starcdn.cn/h5games_release/
 fi
 
 cd $(dirname $0)
@@ -80,6 +84,8 @@ scp -r $uploadFileNamePath $serverRoot
 #scp ../$projectName/gameinfo.json $serverPath"/gameinfo.json"
 
 echo upload Finished ====================================
+echo ${remoteUrl}${uploadFileNamePath}/${folder_version}/${gameName}.zip
+
 #下载gamelist.json
 curl ${gameList} -o ${temp_dir}/gamelistD.json
 
@@ -92,7 +98,7 @@ gameListPath=${rootDir}"/BuildTools/"${temp_dir}/gamelistD.json
 node gameListTools.js  ${gameInfoPath} ${gameListPath} ${rootDir}"/BuildTools/gamelist.json" $zip_file
 
 
-scp ${rootDir}"/BuildTools/gamelist.json" ${serverRoot}config/
+scp ${rootDir}"/BuildTools/gamelist.json" ${debugServerRoot}config/
 
 cp ${gameInfoPath} ./
 
