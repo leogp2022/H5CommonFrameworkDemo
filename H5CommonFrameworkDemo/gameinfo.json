@@ -3,7 +3,7 @@
     "name": "Tiles Hop",
     "scheme": "tileshop",
     "orientation": "portrait",
-    "version": "0.0.20",
+    "version": "0.0.21",
     "tags": ["2D", "Offline"],
     "icon": "https://res.starcdn.cn/h5games_debug/gameicons/TilesHop.png",
     "players": "23k",
