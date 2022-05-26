@@ -45,10 +45,14 @@ try {
 
 	let has = false;
 	for (let i = 0; i < gameList.gameList.length; i++) {
-		if ((theGameInfo.id == gameList.gameList[i].id) && (theGameInfo.scheme == gameList.gameList[i].scheme)) {
-			gameList.gameList[i] = theGameInfo;
-			has = true;
-			break;
+		if (theGameInfo.id == gameList.gameList[i].id) {
+			if (!has) {
+				gameList.gameList[i] = theGameInfo;
+				has = true;
+			} else {
+				gameList.gameList.splice(i, 1);
+				i--;
+			}
 		}
 	}
 	if (!has) {
