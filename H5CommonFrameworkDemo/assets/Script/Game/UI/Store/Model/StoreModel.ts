@@ -1,6 +1,7 @@
+import { IAPLogicManager } from "../../../../../CFramework/CCCBase/Script/IAP/CIAPLogicManager";
 import { EventCenter } from "../../../../../CFramework/CPlugin/Event/CEventCenter";
 import { EventEnum } from "../../../../../CFramework/CPlugin/Event/CEventEnum";
-import IAPManager, { PurchaseFailureReason } from "../../../../../CFramework/CPlugin/IAP/CIAPManager";
+import { PurchaseFailureReason } from "../../../../../CFramework/CPlugin/IAP/CIAPManager";
 import Singleton from "../../../../../CFramework/CPlugin/Pattern/CSingleton";
 
 export class StoreModel extends Singleton {
@@ -11,7 +12,7 @@ export class StoreModel extends Singleton {
     public InitProduct() {
         let consumableProductIds: Array<string> = new Array<string>();
         consumableProductIds.push("com.joyplay.joyplay.token1");
-        IAPManager.Instance().InitProduct(consumableProductIds);
+        IAPLogicManager.InitProduct(consumableProductIds);
     }
 
     public Purchase(purchaseId: number) {
@@ -27,7 +28,7 @@ export class StoreModel extends Singleton {
 
         const productId: string = "com.joyplay.joyplay.token1";
 
-        IAPManager.Instance().PurchaseProductWithVerify(productId, purchaseId, this.OnPurchased.bind(this));
+        IAPLogicManager.PurchaseProductWithVerify(productId, purchaseId, this.OnPurchased.bind(this));
     }
 
     GetIAPReward() {
@@ -41,6 +42,8 @@ export class StoreModel extends Singleton {
             console.log("OnPurchased failed with reason = ", failureReason);
             if (failureReason === PurchaseFailureReason[PurchaseFailureReason.UserCancelled]) {
                 console.warn(`OnPurchased: PurchaseFailureReason.UserCancelled`);
+            } else if (PurchaseFailureReason[PurchaseFailureReason.ProductUnavailable] === failureReason || PurchaseFailureReason[PurchaseFailureReason.PurchasingUnavailable] === failureReason){
+                console.warn(`OnPurchased: Failed to connect to Google Play!`);
             } else {
                 console.warn(`OnPurchased: ${failureReason}`);
             }
