@@ -53,7 +53,7 @@ export default class DebugView extends ViewBase {
 
     OnClickBIBtn() {
         console.log(`OnClickBIBtn`);
-        GameBIManager.Instance().SendCommonEvent("test-data", "test-type");
+        GameBIManager.SendEvent("test-data", "test-type");
     }
 
 }
