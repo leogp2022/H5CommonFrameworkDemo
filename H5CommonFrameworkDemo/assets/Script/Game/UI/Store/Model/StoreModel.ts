@@ -12,7 +12,7 @@ export class StoreModel extends Singleton {
     public InitProduct() {
         let consumableProductIds: Array<string> = new Array<string>();
         consumableProductIds.push("com.joyplay.joyplay.token1");
-        IAPLogicManager.InitProduct(consumableProductIds);
+        IAPLogicManager.Instance().InitProduct(consumableProductIds);
     }
 
     public Purchase(purchaseId: number) {
@@ -28,7 +28,7 @@ export class StoreModel extends Singleton {
 
         const productId: string = "com.joyplay.joyplay.token1";
 
-        IAPLogicManager.PurchaseProductWithVerify(productId, purchaseId, this.OnPurchased.bind(this));
+        IAPLogicManager.Instance().PurchaseProductWithVerify(productId, purchaseId, this.OnPurchased.bind(this));
     }
 
     GetIAPReward() {
