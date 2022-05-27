@@ -21,7 +21,7 @@ export class StoreModel extends Singleton {
 		}
 
         if (CC_DEV) {
-            this.GetIPAReward();
+            this.GetIAPReward();
             return;
         }
 
@@ -30,13 +30,13 @@ export class StoreModel extends Singleton {
         IAPManager.Instance().PurchaseProductWithVerify(productId, purchaseId, this.OnPurchased.bind(this));
     }
 
-    GetIPAReward() {
+    GetIAPReward() {
         console.log(`GetIPAReward`);
     }
 
     OnPurchased(result: boolean, productId: string, purchaseId: number, transactionID?: string, failureReason?: string) {
         if (result && transactionID != null) {
-            this.GetIPAReward();
+            this.GetIAPReward();
         } else {
             console.log("OnPurchased failed with reason = ", failureReason);
             if (failureReason === PurchaseFailureReason[PurchaseFailureReason.UserCancelled]) {
