@@ -49,6 +49,11 @@ export default class DebugView extends ViewBase {
         this.rvAdButton.interactable = isEnable;
     }
 
+    onViewDestroy() {
+        EventCenter.off(EventEnum.INT_AD_READY_STATE_CHANGE, this.OnIntAdReadyStateChange, this);
+        EventCenter.off(EventEnum.RV_AD_READY_STATE_CHANGE, this.OnRVAdReadyStateChange, this);
+    }
+
     OnClickRvBtn(): void {
         console.log(`OnClickRvBtn`);
         AdLogicManager.Instance().TryShowRewardedVideo(RvAdPosition.RV_TEST, (result: boolean) => {
