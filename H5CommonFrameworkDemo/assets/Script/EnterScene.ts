@@ -17,7 +17,8 @@ export default class EnterScene extends cc.Component {
             configPrePath: "Configs/",
             ccStorage: [],
             audioPrePath: "AudioDynamic/",
-            musicPrePath: "AudioDynamic/"
+            musicPrePath: "AudioDynamic/",
+            getBICommonData: this.getBICommonData,
         });
 
         StoreModel.Instance().Init();
@@ -34,4 +35,10 @@ export default class EnterScene extends cc.Component {
     }
 
     // update (dt) {}
+
+    private getBICommonData() {
+        return {};
+    }
+
+
 }
