@@ -85,10 +85,12 @@ export default class DebugView extends ViewBase {
 
     OnIntAdReadyStateChange(isReady: boolean) {
         console.log(`OnIntAdReadyStateChange: ${isReady}`);
+        this.UpdateIntAdBtnState(isReady);
     }
 
     OnRVAdReadyStateChange(isReady: boolean) {
         console.log(`OnRVAdReadyStateChange: ${isReady}`);
+        this.UpdateRVAdBtnState(isReady);
     }
 
 }
