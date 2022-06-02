@@ -21,10 +21,10 @@ export class StoreModel extends Singleton {
 			return;
 		}
 
-        if (CC_DEV) {
-            this.GetIAPReward();
-            return;
-        }
+        // if (CC_DEV) {
+        //     this.GetIAPReward();
+        //     return;
+        // }
 
         const productId: string = "com.joyplay.joyplay.token1";
 

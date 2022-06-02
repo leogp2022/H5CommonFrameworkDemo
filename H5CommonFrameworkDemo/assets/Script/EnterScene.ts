@@ -3,6 +3,7 @@ import ViewManager from "../CFramework/CCCBase/Script/UI/Base/CViewManager";
 import UIWaiting from "../CFramework/CCCBase/Script/UI/CUIWaiting";
 import AdLogicModel from "../CFramework/CCCBase/Script/UserGroup/Model/CAdLogicModel";
 import BridgeManager from "../CFramework/CPlugin/Bridge/CBridgeManager";
+import { DebugUtils } from "../CFramework/CPlugin/Utils/CDebugUtils";
 import DebugView from "./Game/UI/DebugView";
 import { StoreModel } from "./Game/UI/Store/Model/StoreModel";
 
@@ -31,7 +32,7 @@ export default class EnterScene extends cc.Component {
     }
 
     start() {
-
+        // DebugUtils.IsLog = false;
     }
 
     // update (dt) {}
