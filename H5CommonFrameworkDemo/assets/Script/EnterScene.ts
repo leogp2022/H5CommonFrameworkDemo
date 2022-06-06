@@ -1,5 +1,5 @@
 import { CCGameApp } from "../CFramework/CCCBase/Script/CCGameApp";
-import ViewManager from "../CFramework/CCCBase/Script/UI/Base/CViewManager";
+import { ViewManager } from "../CFramework/CCCBase/Script/UI/Base/CViewManager";
 import UIWaiting from "../CFramework/CCCBase/Script/UI/CUIWaiting";
 import AdLogicModel from "../CFramework/CCCBase/Script/UserGroup/Model/CAdLogicModel";
 import BridgeManager from "../CFramework/CPlugin/Bridge/CBridgeManager";
@@ -26,7 +26,7 @@ export default class EnterScene extends cc.Component {
         AdLogicModel.Instance().Init();
 
         cc.game.addPersistRootNode((await UIWaiting.create()).node);
-        await ViewManager.openScene(DebugView);
+        await ViewManager.Instance().openScene(DebugView);
 
         BridgeManager.Instance().scheme_notifyprogress("LandLobby", 1.0);
     }

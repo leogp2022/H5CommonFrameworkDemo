@@ -1,7 +1,7 @@
 import ViewBase from "../../../CFramework/CCCBase/Script/UI/Base/CViewBase";
 import { AdLogicManager } from "../../../CFramework/CCCBase/Script/UserGroup/CAdLogicManager";
 import AdManager from "../../../CFramework/CPlugin/AD/CAdManager";
-import { EventCenter } from "../../../CFramework/CPlugin/Event/CEventCenter";
+import { EventCenter, IEvent } from "../../../CFramework/CPlugin/Event/CEventCenter";
 import { EventEnum } from "../../../CFramework/CPlugin/Event/CEventEnum";
 import { GameBIManager } from "../BI/GameBIManager";
 import { IntAdPosition, RvAdPosition } from "../UserGroup/AdPosition";
@@ -39,6 +39,7 @@ export default class DebugView extends ViewBase {
 
         this.UpdateIntAdBtnState(AdManager.Instance().IsInterstitialReady);
         this.UpdateRVAdBtnState(AdManager.Instance().IsRewardVideoReady);
+
     }
 
     UpdateIntAdBtnState(isEnable: boolean) {
@@ -83,12 +84,12 @@ export default class DebugView extends ViewBase {
         GameBIManager.SendEvent("test-data", "test-type");
     }
 
-    OnIntAdReadyStateChange(isReady: boolean) {
+    OnIntAdReadyStateChange(e: IEvent, isReady: boolean) {
         console.log(`OnIntAdReadyStateChange: ${isReady}`);
         this.UpdateIntAdBtnState(isReady);
     }
 
-    OnRVAdReadyStateChange(isReady: boolean) {
+    OnRVAdReadyStateChange(e: IEvent, isReady: boolean) {
         console.log(`OnRVAdReadyStateChange: ${isReady}`);
         this.UpdateRVAdBtnState(isReady);
     }
