@@ -39,29 +39,6 @@ fi
 buildPath=${rootDir}/BuildTools
 cd $buildPath
 
-echo DLC Begin =====================
-
-rm -rf $uploadFileNamePath
-mkdir $uploadFileNamePath
-folder_version=${android_version//./_}
-path_version=${uploadFileNamePath}/${folder_version}
-mkdir $path_version
-dlcPath=${path_version}/dlc
-mkdir ${dlcPath}
-
-cd ${rootDir}/${projectName}/build/web-mobile/assets/
-dlcVersionFileName=`find ./${dlcName} -iname "config.*.json" -maxdepth 1`
-dlcVersion=${dlcVersionFileName:(-10):5}
-
-dlcZipName=${dlcName}.${dlcVersion}.zip
-zip ${dlcZipName} ${dlcName}
-rm -rf ${dlcName}
-mv ${dlcZipName} ${buildPath}/${dlcPath}
-
-echo DLC End =====================
-
-cd $buildPath
-
 echo Postprocessing Begin ==================================
 
 
@@ -96,6 +73,31 @@ zip_file_fullName=$gameName"_"$android_version.zip
 mkdir ${temp_dir}
 
 cp -r $localDir $temp_dir
+
+echo DLC Begin =====================
+
+rm -rf $uploadFileNamePath
+mkdir $uploadFileNamePath
+folder_version=${android_version//./_}
+path_version=${uploadFileNamePath}/${folder_version}
+mkdir $path_version
+dlcPath=${path_version}/dlc
+mkdir ${dlcPath}
+
+cd ${temp_dir}/assets
+dlcVersionFileName=`find ./${dlcName} -iname "config.*.json" -maxdepth 1`
+echo "dlcVersionFileName:"$dlcVersionFileName
+dlcVersion=${dlcVersionFileName:(-10):5}
+
+dlcZipName=${dlcName}.${dlcVersion}.zip
+zip ${dlcZipName} ${dlcName}
+rm -rf ${dlcName}
+mv ${dlcZipName} ${buildPath}/${dlcPath}
+
+echo DLC End =====================
+
+cd $buildPath
+
 
 zip -q -r $zip_file $temp_dir
 
