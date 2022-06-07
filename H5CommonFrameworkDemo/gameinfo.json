@@ -12,5 +12,6 @@
     "zipName": "TilesHop",
     "url": "",
     "inPacket": false,
-    "size": 33354
+    "size": 33354,
+    "dlc": "MainPrefab"
 }

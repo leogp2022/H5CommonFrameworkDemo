@@ -7,6 +7,7 @@ localDir=${rootDir}/$projectName/build/web-mobile/
 gameName=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.zipName'`
 android_version=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.version'`
 uploadFileNamePath=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.scheme'`
+dlcName=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.dlc'`
 gameinfo=`cat ${rootDir}/$projectName/gameinfo.json`
 
 if [ ! -d "BuildTools/node_modules" ]
@@ -36,6 +37,28 @@ remoteUrl=https://res.starcdn.cn/h5games_release/
 fi
 
 cd $(dirname $0)
+
+echo DLC Begin =====================
+
+rm -rf $uploadFileNamePath
+mkdir $uploadFileNamePath
+folder_version=${android_version//./_}
+path_version=${uploadFileNamePath}/${folder_version}
+mkdir $path_version
+dlcPath=${path_version}/dlc
+mkdir ${dlcPath}
+
+cd ${projectName}/build/web-mobile/assets/
+dlcVersionFileName=`find ./${dlcName} -iname "config.*.json" -maxdepth 1`
+dlcVersion=${dlcVersionFileName:(-10):5}
+
+dlcZipName=${dlcName}.${dlcVersion}.zip
+zip ${dlcZipName} ${dlcName}
+rm -rf ${dlcName}
+mv ${dlcZipName} ${dlcPath}
+
+echo DLC End =====================
+
 echo Postprocessing Begin ==================================
 
 
@@ -76,12 +99,6 @@ zip -q -r $zip_file $temp_dir
 echo old upload Start ====================================
 scp $zip_file $serverPath"/"$zip_file_fullName
 echo old upload Finished ====================================
-
-rm -rf $uploadFileNamePath
-mkdir $uploadFileNamePath
-folder_version=${android_version//./_}
-path_version=${uploadFileNamePath}/${folder_version}
-mkdir $path_version
 
 cp $zip_file $path_version/$gameName".zip"
 
