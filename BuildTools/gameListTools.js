@@ -45,7 +45,7 @@ try {
 
 	let has = false;
 	for (let i = 0; i < gameList.gameList.length; i++) {
-		if (theGameInfo.id == gameList.gameList[i].id) {
+		if (theGameInfo.scheme == gameList.gameList[i].scheme) {
 			if (!has) {
 				gameList.gameList[i] = theGameInfo;
 				has = true;
