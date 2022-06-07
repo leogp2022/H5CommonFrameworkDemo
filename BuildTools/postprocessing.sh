@@ -36,9 +36,8 @@ gameList=https://res.starcdn.cn/h5games_release/config/gamelist.json
 remoteUrl=https://res.starcdn.cn/h5games_release/
 fi
 
-echo $rootDir
-echo $0
-cd $(dirname $0)
+buildPath=${rootDir}/BuildTools
+cd $buildPath
 
 echo DLC Begin =====================
 
@@ -50,18 +49,18 @@ mkdir $path_version
 dlcPath=${path_version}/dlc
 mkdir ${dlcPath}
 
-cd ${projectName}/build/web-mobile/assets/
+cd ${rootDir}/${projectName}/build/web-mobile/assets/
 dlcVersionFileName=`find ./${dlcName} -iname "config.*.json" -maxdepth 1`
 dlcVersion=${dlcVersionFileName:(-10):5}
 
 dlcZipName=${dlcName}.${dlcVersion}.zip
 zip ${dlcZipName} ${dlcName}
 rm -rf ${dlcName}
-mv ${dlcZipName} ${rootDir}/${dlcPath}
+mv ${dlcZipName} ${buildPath}/${dlcPath}
 
 echo DLC End =====================
 
-cd $(dirname $0)
+cd $buildPath
 
 echo Postprocessing Begin ==================================
 
