@@ -36,7 +36,9 @@ gameList=https://res.starcdn.cn/h5games_release/config/gamelist.json
 remoteUrl=https://res.starcdn.cn/h5games_release/
 fi
 
-cd $rootDir
+echo $rootDir
+echo $0
+cd $(dirname $0)
 
 echo DLC Begin =====================
 
@@ -59,7 +61,7 @@ mv ${dlcZipName} ${rootDir}/${dlcPath}
 
 echo DLC End =====================
 
-cd $rootDir
+cd $(dirname $0)
 
 echo Postprocessing Begin ==================================
 
