@@ -89,11 +89,7 @@ cd ${temp_dir}/assets
 dlcNameArr=(${dlcNames//,/ })
 for dlcName in ${dlcNameArr[@]}
 do
-dlcVersionFileName=`find ./${dlcName} -iname "config.*.json" -maxdepth 1`
-echo "dlcVersionFileName:"$dlcVersionFileName
-dlcVersion=${dlcVersionFileName:(-10):5}
-
-dlcZipName=${dlcName}.${dlcVersion}.zip
+dlcZipName=${dlcName}.zip
 zip -q -r ${dlcZipName} ${dlcName}
 rm -rf ${dlcName}
 mv ${dlcZipName} ${buildPath}/${dlcPath}
