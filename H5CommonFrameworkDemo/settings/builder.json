@@ -9,7 +9,7 @@
   "packageName": "org.cocos2d.helloworld",
   "startScene": "cd4c75d1-ff06-4b06-9f87-84ed2c592c92",
   "title": "H5CommonFrameworkDemo",
-  "webOrientation": "auto",
+  "webOrientation": "portrait",
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
   "mainCompressionType": "default",
