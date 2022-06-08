@@ -7,7 +7,7 @@ localDir=${rootDir}/$projectName/build/web-mobile/
 gameName=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.zipName'`
 android_version=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.version'`
 uploadFileNamePath=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.scheme'`
-dlcName=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.dlc'`
+dlcNames=`cat ${rootDir}/$projectName/gameinfo.json |jq -r '.dlc'`
 gameinfo=`cat ${rootDir}/$projectName/gameinfo.json`
 
 if [ ! -d "BuildTools/node_modules" ]
@@ -85,6 +85,10 @@ dlcPath=${path_version}/dlc
 mkdir ${dlcPath}
 
 cd ${temp_dir}/assets
+
+dlcNameArr=(${dlcNames//,/ })
+for dlcName in ${dlcNameArr[@]}
+do
 dlcVersionFileName=`find ./${dlcName} -iname "config.*.json" -maxdepth 1`
 echo "dlcVersionFileName:"$dlcVersionFileName
 dlcVersion=${dlcVersionFileName:(-10):5}
@@ -93,6 +97,7 @@ dlcZipName=${dlcName}.${dlcVersion}.zip
 zip -q -r ${dlcZipName} ${dlcName}
 rm -rf ${dlcName}
 mv ${dlcZipName} ${buildPath}/${dlcPath}
+done
 
 echo DLC End =====================
 
