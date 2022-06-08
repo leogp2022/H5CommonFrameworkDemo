@@ -90,8 +90,8 @@ echo "dlcVersionFileName:"$dlcVersionFileName
 dlcVersion=${dlcVersionFileName:(-10):5}
 
 dlcZipName=${dlcName}.${dlcVersion}.zip
-zip ${dlcZipName} ${dlcName}
-# rm -rf ${dlcName}
+zip -q -r ${dlcZipName} ${dlcName}
+rm -rf ${dlcName}
 mv ${dlcZipName} ${buildPath}/${dlcPath}
 
 echo DLC End =====================
@@ -138,12 +138,12 @@ buildListPath=${rootDir}"/BuildTools/buildlist.json"
 touch $buildListPath
 node gameVersionTools.js $buildPath $android_version $buildListPath
 
-# rm $zip_file
-# rm -rf $temp_dir
-# rm gameinfo.json
-# rm gamelist.json
-# rm -f .zip
-# rm -f *.zip
+rm $zip_file
+rm -rf $temp_dir
+rm gameinfo.json
+rm gamelist.json
+rm -f .zip
+rm -f *.zip
 
 echo Postprocessing End ====================================
 
