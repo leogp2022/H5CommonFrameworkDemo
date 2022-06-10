@@ -57,6 +57,8 @@ mkdir ${temp_dir}
 
 cp -r $localDir $temp_dir
 
+if [ $dlcNames ]
+then
 echo DLC Begin =====================
 
 rm -rf $uploadFileNamePath
@@ -79,6 +81,7 @@ mv ${dlcZipName} ${buildPath}/${dlcPath}
 done
 
 echo DLC End =====================
+fi
 
 cd $buildPath
 
@@ -86,24 +89,20 @@ zip -q -r $zip_file $temp_dir
 
 cp $zip_file $path_version/$gameName".zip"
 
-# cp to local backup
-
 if [ $buildMode == 0 ]
 then
-echo new upload Start ====================================
+echo new upload Begin ====================================
 echo ${remoteUrl}${uploadFileNamePath}/${folder_version}/${gameName}.zip
 scp -r $uploadFileNamePath $serverRoot
-echo new upload Finished ====================================
+echo new upload End ====================================
 
-echo old upload Start ====================================
+echo old upload Begin ====================================
 scp $zip_file $serverPath"/"$zip_file_fullName
-echo old upload Finished ====================================
+echo old upload End ====================================
 fi
 
-cp $zip_file $gameName".zip"
-
-buildPath=${projectDir}/build
-buildVersionPath=$buildPath"/"$android_version
+localBuildPath=${projectDir}/build
+buildVersionPath=$localBuildPath"/"$android_version
 mkdir $buildVersionPath
 if [ $buildMode == 0 ]
 then
@@ -112,10 +111,12 @@ else
 buildVersionPath=${buildVersionPath}/release
 fi
 mkdir $buildVersionPath
-mv $gameName".zip" $buildVersionPath/
 
-buildListPath=${buildPath}"/buildlist.json"
+cp $zip_file ${buildVersionPath}/${gameName}".zip"
+cp -R ${buildPath}/${dlcPath} ${buildVersionPath}
+
+buildListPath=${localBuildPath}"/buildlist.json"
 touch $buildListPath
-node ${buildToolDir}/gameVersionTools.js $buildPath $android_version $buildListPath
+node ${buildToolDir}/gameVersionTools.js $localBuildPath $android_version $buildListPath
 
 echo Postprocessing End ====================================
