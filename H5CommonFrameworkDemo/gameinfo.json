@@ -3,7 +3,7 @@
     "name": "Tiles Hop",
     "scheme": "tileshop",
     "orientation": "portrait",
-    "version": "0.0.121",
+    "version": "0.0.122",
     "tags": ["2D", "Offline"],
     "icon": "https://res.starcdn.cn/h5games_debug/gameicons/TilesHop.png",
     "players": "23k",
@@ -12,5 +12,6 @@
     "zipName": "TilesHop",
     "url": "",
     "inPacket": false,
-    "size": 33354
+    "size": 33354,
+    "dlc": "MainPrefab"
 }
