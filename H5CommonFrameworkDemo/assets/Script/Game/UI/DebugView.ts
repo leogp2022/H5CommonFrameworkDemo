@@ -42,6 +42,12 @@ export default class DebugView extends ViewBase {
         let getDlc3Button: cc.Node = this.findChild("GetDlc3Btn");
         this.registerTouch(getDlc3Button, this.OnClickGetDlc3Btn, this);
 
+        let unzipDlc2Button: cc.Node = this.findChild("UnzipDlc2Btn");
+        this.registerTouch(unzipDlc2Button, this.OnClickUnzipDlc2Btn, this);
+
+        let unzipDlc3Button: cc.Node = this.findChild("UnzipDlc3Btn");
+        this.registerTouch(unzipDlc3Button, this.OnClickUnzipDlc3Btn, this);
+
         let loadDlc2Button: cc.Node = this.findChild("LoadDlc2Btn");
         this.registerTouch(loadDlc2Button, this.OnClickLoadDlc2Btn, this);
 
@@ -53,6 +59,7 @@ export default class DebugView extends ViewBase {
         EventCenter.on(EventEnum.INT_AD_READY_STATE_CHANGE, this.OnIntAdReadyStateChange, this);
         EventCenter.on(EventEnum.RV_AD_READY_STATE_CHANGE, this.OnRVAdReadyStateChange, this);
         EventCenter.on(EventEnum.DLC_DOWNLOAD_UPDATE, this.OnDlcDownloadUpdate, this);
+        EventCenter.on(EventEnum.DLC_UNZIP_COMPLETE, this.OnDlcUnzipComplete, this);
 
         this.UpdateIntAdBtnState(AdManager.Instance().IsInterstitialReady);
         this.UpdateRVAdBtnState(AdManager.Instance().IsRewardVideoReady);
@@ -111,6 +118,16 @@ export default class DebugView extends ViewBase {
         BridgeManager.Instance().scheme_downloaddlc("MainPrefab3");
     }
 
+    OnClickUnzipDlc2Btn() {
+        console.log(`OnClickUnzipDlc2Btn`);
+        BridgeManager.Instance().scheme_unzipdlc("MainPrefab2");
+    }
+
+    OnClickUnzipDlc3Btn() {
+        console.log(`OnClickUnzipDlc3Btn`);
+        BridgeManager.Instance().scheme_unzipdlc("MainPrefab3");
+    }
+
     OnClickLoadDlc2Btn() {
         console.log(`OnClickLoadDlc2Btn`);
         ViewManager.Instance().openView(DebugView2);
@@ -131,8 +148,12 @@ export default class DebugView extends ViewBase {
         this.UpdateRVAdBtnState(isReady);
     }
 
-    OnDlcDownloadUpdate(e: IEvent, ret: { id: string; progress: string; error: string; }) {
-        console.log(`OnDlcDownloadUpdate > id: ${ret.id}, progress: ${ret.progress}, error: ${ret.error}`);
+    OnDlcDownloadUpdate(e: IEvent, id: string, progress: string, error: string) {
+        console.log(`OnDlcDownloadUpdate > id: ${id}, progress: ${progress}, error: ${error}`);
+    }
+
+    OnDlcUnzipComplete(e: IEvent, result: boolean, id: string) {
+        console.log(`OnDlcUnzipComplete > result: ${result}, id: ${id}`);
     }
 
 }
