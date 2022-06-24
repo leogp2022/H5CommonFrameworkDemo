@@ -1,12 +1,12 @@
 import { IAPLogicManager } from "../../../../../CFramework/CCCBase/Script/IAP/CIAPLogicManager";
-import { EventCenter } from "../../../../../CFramework/CPlugin/Event/CEventCenter";
+import { EventCenter, IEvent } from "../../../../../CFramework/CPlugin/Event/CEventCenter";
 import { EventEnum } from "../../../../../CFramework/CPlugin/Event/CEventEnum";
 import { PurchaseFailureReason } from "../../../../../CFramework/CPlugin/IAP/CIAPManager";
 import Singleton from "../../../../../CFramework/CPlugin/Pattern/CSingleton";
 
 export class StoreModel extends Singleton {
     public Init() {
-        EventCenter.on(EventEnum.VERIFY_UNFULFILLED_PAYMENTS, this.OnPurchased, this);
+        EventCenter.on(EventEnum.VERIFY_UNFULFILLED_PAYMENTS, this.OnVeryfyUnfulfilledPayment, this);
     }
 
     public InitProduct() {
@@ -33,6 +33,10 @@ export class StoreModel extends Singleton {
 
     GetIAPReward() {
         console.log(`GetIPAReward`);
+    }
+
+    OnVeryfyUnfulfilledPayment(e: IEvent, result: boolean, productId: string, purchaseId: number, transactionID?: string, failureReason?: string) {
+        this.OnPurchased(result, productId, purchaseId, transactionID, failureReason);
     }
 
     OnPurchased(result: boolean, productId: string, purchaseId: number, transactionID?: string, failureReason?: string) {
