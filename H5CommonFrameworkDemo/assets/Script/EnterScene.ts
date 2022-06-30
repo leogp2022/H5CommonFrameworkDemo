@@ -25,7 +25,6 @@ export default class EnterScene extends cc.Component {
         StoreModel.Instance().Init();
         AdLogicModel.Instance().Init();
 
-        cc.game.addPersistRootNode((await UIWaiting.create()).node);
         await ViewManager.Instance().openScene(DebugView);
 
         BridgeManager.Instance().scheme_notifyprogress("LandLobby", 1.0);
