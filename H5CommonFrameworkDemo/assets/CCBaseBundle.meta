@@ -1,0 +1,12 @@
+{
+  "ver": "1.1.2",
+  "uuid": "6f2b8e48-3c1d-4763-ab9f-b252423e4711",
+  "isBundle": true,
+  "bundleName": "CCBasePrefab",
+  "priority": 1,
+  "compressionType": {},
+  "optimizeHotUpdate": {},
+  "inlineSpriteFrames": {},
+  "isRemoteBundle": {},
+  "subMetas": {}
+}
