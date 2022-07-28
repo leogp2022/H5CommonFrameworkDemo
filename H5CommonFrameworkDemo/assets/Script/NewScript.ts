@@ -34,7 +34,7 @@ export default class NewClass extends cc.Component {
             musicPrePath: "AudioDynamic/",
             getBICommonData: null,
         });
-        BridgeManager.Instance().scheme_backtogamecenter();
+        BridgeManager.Instance().scheme_notifyprogress("LandLobby", 1.0);
 
         // if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS) {
         //     this.checkSupport(function (result) {
