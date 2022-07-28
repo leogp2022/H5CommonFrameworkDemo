@@ -7,7 +7,7 @@ const {ccclass, property} = cc._decorator;
 export default class NewClass extends cc.Component {
 
     onLoad () {
-        console.log("ver: 004");
+        console.log("ver: 005");
         console.log("webp: ", cc.sys.capabilities.webp);
         cc.sys.capabilities.webp = true;
 
