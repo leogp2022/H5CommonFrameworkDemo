@@ -11,7 +11,12 @@
   "height": 270,
   "platformSettings": {
     "default": {
-      "formats": []
+      "formats": [
+        {
+          "name": "webp",
+          "quality": 99
+        }
+      ]
     }
   },
   "subMetas": {

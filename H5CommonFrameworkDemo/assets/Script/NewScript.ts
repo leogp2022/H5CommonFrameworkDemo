@@ -22,7 +22,7 @@ export default class NewClass extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        console.log("ver: 002");
+        console.log("ver: 003");
         console.log("webp: ", cc.sys.capabilities.webp);
         cc.sys.capabilities.webp = true;
 
