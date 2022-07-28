@@ -5,6 +5,9 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import { CCGameApp } from "../CFramework/CCCBase/Script/CCGameApp";
+import BridgeManager from "../CFramework/CPlugin/Bridge/CBridgeManager";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -22,6 +25,16 @@ export default class NewClass extends cc.Component {
         console.log("ver: 001");
         console.log("webp: ", cc.sys.capabilities.webp);
         cc.sys.capabilities.webp = true;
+
+        CCGameApp.Instance().Init({
+            gameScheme: "tileshop",
+            configPrePath: "Configs/",
+            ccStorage: [],
+            audioPrePath: "AudioDynamic/",
+            musicPrePath: "AudioDynamic/",
+            getBICommonData: null,
+        });
+        BridgeManager.Instance().scheme_backtogamecenter();
 
         // if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS) {
         //     this.checkSupport(function (result) {
