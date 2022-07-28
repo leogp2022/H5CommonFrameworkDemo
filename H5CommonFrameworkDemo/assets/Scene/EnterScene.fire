@@ -275,15 +275,13 @@
     "_id": "29zXboiXFBKoIV4PQ2liTe"
   },
   {
-    "__type__": "c1eb0TfYuREI7MPoZD8cRlJ",
+    "__type__": "9db7fGL3BZCALktFHpOACA+",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 2
     },
     "_enabled": true,
-    "label": null,
-    "text": "hello",
-    "_id": "36xNiUf2tN7bNPJ8RvvKnZ"
+    "_id": "a6P1yzeY1GyJawtxmVrzLm"
   }
 ]

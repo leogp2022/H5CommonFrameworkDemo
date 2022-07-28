@@ -13,6 +13,10 @@ const { ccclass, property } = cc._decorator;
 export default class EnterScene extends cc.Component {
 
     async onLoad() {
+        console.log("ver: 004");
+        console.log("webp: ", cc.sys.capabilities.webp);
+        cc.sys.capabilities.webp = true;
+
         CCGameApp.Instance().Init({
             gameScheme: "tileshop",
             configPrePath: "Configs/",
@@ -23,7 +27,6 @@ export default class EnterScene extends cc.Component {
         });
 
         StoreModel.Instance().Init();
-        AdLogicModel.Instance().Init();
 
         await ViewManager.Instance().openScene(DebugView);
 
