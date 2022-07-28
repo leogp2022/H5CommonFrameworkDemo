@@ -19,6 +19,8 @@ export default class NewClass extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        console.log("ver: 001");
+        console.log("webp: ", cc.sys.capabilities.webp);
         cc.sys.capabilities.webp = true;
 
         // if (cc.sys.isBrowser && cc.sys.os === cc.sys.OS_IOS) {
@@ -28,7 +30,7 @@ export default class NewClass extends cc.Component {
         //     });
         // }
 
-        cc.director.loadScene("testwebp");
+        // cc.director.loadScene("testwebp");
     }
 
     start () {
