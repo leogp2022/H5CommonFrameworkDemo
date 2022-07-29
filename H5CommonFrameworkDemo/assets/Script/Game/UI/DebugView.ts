@@ -54,6 +54,9 @@ export default class DebugView extends ViewBase {
         let loadDlc3Button: cc.Node = this.findChild("LoadDlc3Btn");
         this.registerTouch(loadDlc3Button, this.OnClickLoadDlc3Btn, this);
 
+        let loadButton: cc.Node = this.findChild("LoadBtn");
+        this.registerTouch(loadButton, this.OnClickLoadBtn, this);
+
         StoreModel.Instance().InitProduct();
 
         EventCenter.on(EventEnum.INT_AD_READY_STATE_CHANGE, this.OnIntAdReadyStateChange, this);
@@ -136,6 +139,17 @@ export default class DebugView extends ViewBase {
     OnClickLoadDlc3Btn() {
         console.log(`OnClickLoadDlc3Btn`);
         ViewManager.Instance().openView(DebugView3);
+    }
+
+    OnClickLoadBtn() {
+        console.log(`OnClickLoadBtn`);
+        cc.assetManager.loadRemote("https://res.starcdn.cn/h5games_debug/mergex/icons/MergeX.png", (e, t: cc.Texture2D)=>{
+            console.log("e:", e);
+            console.log("t:", t);
+            let f1 = new cc.SpriteFrame();
+            f1.setTexture(t);
+            cc.Canvas.instance.node.children[1].getComponent(cc.Sprite).spriteFrame = f1;
+        });
     }
 
     OnIntAdReadyStateChange(e: IEvent, isReady: boolean) {
