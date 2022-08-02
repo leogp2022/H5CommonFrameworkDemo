@@ -1,9 +1,18 @@
 {
-  "name": "Tools",
+  "name": "tools",
   "description": "Tools",
   "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "commander": "2.8.1"
-  }
+    "commander": "2.8.1",
+    "fs-jetpack": "^4.3.1"
+  },
+  "main": "gameListTools.js",
+  "devDependencies": {},
+  "scripts": {
+    "pic": "node setPicFormat.js 100 . \"*.png.meta\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -1,0 +1,21 @@
+{
+  "name": "mergex2h5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pic": "node BuildTools/setPicFormat.js 100 . \"*.png.meta\"",
+    "picd": "node BuildTools/setPicFormat.js 100 . \"*.png.meta\" 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlyDragonGO/MergeX2H5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlyDragonGO/MergeX2H5/issues"
+  },
+  "homepage": "https://github.com/FlyDragonGO/MergeX2H5#readme"
+}
