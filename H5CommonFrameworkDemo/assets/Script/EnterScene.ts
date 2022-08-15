@@ -1,6 +1,7 @@
 import { CCGameApp } from "../CFramework/CCCBase/Script/CCGameApp";
 import { ViewManager } from "../CFramework/CCCBase/Script/UI/Base/CViewManager";
 import UIWaiting from "../CFramework/CCCBase/Script/UI/CUIWaiting";
+import { RecommandGameModel } from "../CFramework/CCCBase/Script/UI/RecommandGame/Model/RecommandGameModel";
 import AdLogicModel from "../CFramework/CCCBase/Script/UserGroup/Model/CAdLogicModel";
 import BridgeManager from "../CFramework/CPlugin/Bridge/CBridgeManager";
 import { DebugUtils } from "../CFramework/CPlugin/Utils/CDebugUtils";
@@ -27,10 +28,13 @@ export default class EnterScene extends cc.Component {
         });
 
         StoreModel.Instance().Init();
+        RecommandGameModel.Instance().Init();
 
         await ViewManager.Instance().openScene(DebugView);
 
         BridgeManager.Instance().scheme_notifyprogress("LandLobby", 1.0);
+
+        
     }
 
     start() {

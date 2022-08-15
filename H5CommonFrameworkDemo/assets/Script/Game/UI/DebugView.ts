@@ -9,7 +9,9 @@ import { GameBIManager } from "../BI/GameBIManager";
 import { IntAdPosition, RvAdPosition } from "../UserGroup/AdPosition";
 import DebugView2 from "./DebugView2";
 import DebugView3 from "./DebugView3";
+import { UIMoreGameCtrl } from "../../../CFramework/CCCBase/Script/UI/RecommandGame/CUIMoreGameCtrl";
 import { StoreModel } from "./Store/Model/StoreModel";
+import { UIPopGameCtrl } from "../../../CFramework/CCCBase/Script/UI/RecommandGame/CUIPopGameCtrl";
 
 const { ccclass, property } = cc._decorator;
 
@@ -17,15 +19,16 @@ const { ccclass, property } = cc._decorator;
 export default class DebugView extends ViewBase {
     protected static sPrefabPath: string = "MainPrefab/DebugView";
 
-    intAdButton: cc.Button;
-    rvAdButton: cc.Button
+    _intAdButton: cc.Button;
+    _rvAdButton: cc.Button
+    _loadRemoteSprite: cc.Node;
 
     protected async onViewLoad(): Promise<void> {
-        this.rvAdButton = this.findChild("RvBtn").getComponent<cc.Button>(cc.Button);
-        this.registerTouch(this.rvAdButton.node, this.OnClickRvBtn, this);
+        this._rvAdButton = this.findChild("RvBtn").getComponent<cc.Button>(cc.Button);
+        this.registerTouch(this._rvAdButton.node, this.OnClickRvBtn, this);
 
-        this.intAdButton = this.findChild("IntBtn").getComponent<cc.Button>(cc.Button);
-        this.registerTouch(this.intAdButton.node, this.OnClickIntBtn, this);
+        this._intAdButton = this.findChild("IntBtn").getComponent<cc.Button>(cc.Button);
+        this.registerTouch(this._intAdButton.node, this.OnClickIntBtn, this);
 
         let iapButton: cc.Node = this.findChild("IapBtn");
         this.registerTouch(iapButton, this.OnClickIapBtn, this);
@@ -57,6 +60,14 @@ export default class DebugView extends ViewBase {
         let loadButton: cc.Node = this.findChild("LoadBtn");
         this.registerTouch(loadButton, this.OnClickLoadBtn, this);
 
+        this._loadRemoteSprite = this.findChild("LoadRemoteSprite");
+
+        let exitButton: cc.Node = this.findChild("ExitBtn");
+        this.registerTouch(exitButton, this.OnClickExitBtn, this);
+
+        let paoPaoButton: cc.Node = this.findChild("PaoPaoBtn");
+        this.registerTouch(paoPaoButton, this.OnClickPaoPaoBtn, this);
+
         StoreModel.Instance().InitProduct();
 
         EventCenter.on(EventEnum.INT_AD_READY_STATE_CHANGE, this.OnIntAdReadyStateChange, this);
@@ -70,11 +81,11 @@ export default class DebugView extends ViewBase {
     }
 
     UpdateIntAdBtnState(isEnable: boolean) {
-        this.intAdButton.interactable = isEnable;
+        this._intAdButton.interactable = isEnable;
     }
 
     UpdateRVAdBtnState(isEnable: boolean) {
-        this.rvAdButton.interactable = isEnable;
+        this._rvAdButton.interactable = isEnable;
     }
 
     onViewDestroy() {
@@ -148,8 +159,18 @@ export default class DebugView extends ViewBase {
             console.log("t:", t);
             let f1 = new cc.SpriteFrame();
             f1.setTexture(t);
-            cc.Canvas.instance.node.children[1].getComponent(cc.Sprite).spriteFrame = f1;
+            this._loadRemoteSprite.getComponent(cc.Sprite).spriteFrame = f1;
         });
+    }
+
+    OnClickExitBtn() {
+        console.log(`OnClickExitBtn`);
+        ViewManager.Instance().openView(UIMoreGameCtrl);
+    }
+
+    OnClickPaoPaoBtn() {
+        console.log(`OnClickPaoPaoBtn`);
+        ViewManager.Instance().openView(UIPopGameCtrl)
     }
 
     OnIntAdReadyStateChange(e: IEvent, isReady: boolean) {
