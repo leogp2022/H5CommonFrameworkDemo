@@ -5082,8 +5082,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        270.331,
-        614.345,
+        -214.773,
+        -7.517,
         0,
         0,
         0,
@@ -5110,7 +5110,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Background",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 122
     },
@@ -5181,7 +5181,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Label",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 123
     },
