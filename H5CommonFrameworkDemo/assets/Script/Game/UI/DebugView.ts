@@ -74,6 +74,9 @@ export default class DebugView extends ViewBase {
         let paoPaoCloseButton: cc.Node = this.findChild("PaoPaoCloseBtn");
         this.registerTouch(paoPaoCloseButton, this.OnClickPaoPaoCloseBtn, this);
 
+        let exitRecommandBtn: cc.Node = this.findChild("ExitRecommandBtn");
+        this.registerTouch(exitRecommandBtn, this.OnClickExitRecommandBtn, this);
+
         StoreModel.Instance().InitProduct();
 
         EventCenter.on(EventEnum.INT_AD_READY_STATE_CHANGE, this.OnIntAdReadyStateChange, this);
@@ -185,6 +188,10 @@ export default class DebugView extends ViewBase {
 
     OnClickPaoPaoCloseBtn() {
         EventCenter.emit(EventEnum.RECOMMAND_GAME_TOOL_CLOSE);
+    }
+
+    OnClickExitRecommandBtn() {
+        EventCenter.emit(EventEnum.RECOMMAND_GAME_EXIT_OPEN);
     }
 
     OnIntAdReadyStateChange(e: IEvent, isReady: boolean) {
