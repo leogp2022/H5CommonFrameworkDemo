@@ -68,6 +68,12 @@ export default class DebugView extends ViewBase {
         let paoPaoButton: cc.Node = this.findChild("PaoPaoBtn");
         this.registerTouch(paoPaoButton, this.OnClickPaoPaoBtn, this);
 
+        let paoPaoOpenButton: cc.Node = this.findChild("PaoPaoOpenBtn");
+        this.registerTouch(paoPaoOpenButton, this.OnClickPaoPaoOpenBtn, this);
+
+        let paoPaoCloseButton: cc.Node = this.findChild("PaoPaoCloseBtn");
+        this.registerTouch(paoPaoCloseButton, this.OnClickPaoPaoCloseBtn, this);
+
         StoreModel.Instance().InitProduct();
 
         EventCenter.on(EventEnum.INT_AD_READY_STATE_CHANGE, this.OnIntAdReadyStateChange, this);
@@ -171,6 +177,14 @@ export default class DebugView extends ViewBase {
     OnClickPaoPaoBtn() {
         console.log(`OnClickPaoPaoBtn`);
         ViewManager.Instance().openView(UIPopGameCtrl)
+    }
+
+    OnClickPaoPaoOpenBtn() {
+        EventCenter.emit(EventEnum.RECOMMAND_GAME_TOOL_OPEN);
+    }
+
+    OnClickPaoPaoCloseBtn() {
+        EventCenter.emit(EventEnum.RECOMMAND_GAME_TOOL_CLOSE);
     }
 
     OnIntAdReadyStateChange(e: IEvent, isReady: boolean) {
