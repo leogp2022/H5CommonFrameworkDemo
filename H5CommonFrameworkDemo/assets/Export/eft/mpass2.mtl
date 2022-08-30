@@ -1,0 +1,17 @@
+{
+  "__type__": "cc.Material",
+  "_name": "mpass2",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "79b94bb6-c68d-4bde-a7fd-97b7692525cb"
+  },
+  "_techniqueIndex": 0,
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_TEXTURE": true
+      }
+    }
+  }
+}
