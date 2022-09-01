@@ -1,0 +1,15 @@
+{
+  "__type__": "cc.Material",
+  "_name": "spass2",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "138161a4-e1f7-4ea6-b32f-1d3a72e61a35"
+  },
+  "_techniqueIndex": 0,
+  "_techniqueData": {
+    "0": {
+      "defines": {}
+    }
+  }
+}
